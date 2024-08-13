@@ -40,6 +40,10 @@ document
 function CustomScroll(id) {
   const element = document.getElementById(id);
 
+  const btn = document.getElementById("flipButton");
+  if (btn && btn.click) {
+    btn.click();
+  }
   let position = element.offsetTop;
 
   window.scrollTo({
