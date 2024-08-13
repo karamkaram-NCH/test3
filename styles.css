@@ -84,8 +84,15 @@ h3 {
 }
 
 #clientCarousel {
-  width: 90vh;
+  max-width: 90vh;
   margin: auto;
+}
+
+@media only screen and (orientation: landscape) {
+  #clientCarousel {
+    max-width: 90vw;
+    margin: auto;
+  }
 }
 
 .about,
