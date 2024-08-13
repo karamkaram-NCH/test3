@@ -1,5 +1,7 @@
+let opened = false;
+
 document.addEventListener("DOMContentLoaded", function () {
-  getVisitorData();
+  // getVisitorData();
   animate();
 });
 
@@ -37,11 +39,15 @@ document
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+function openNavbar() {
+  opened = true;
+}
+
 function CustomScroll(id) {
   const element = document.getElementById(id);
 
   const btn = document.getElementById("flipButton");
-  if (btn && btn.click) {
+  if (btn && btn.click && opened) {
     btn.click();
   }
   let position = element.offsetTop;
