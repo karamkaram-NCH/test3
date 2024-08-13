@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark" id="navv">
+      <a class="navbar-brand" onclick="CustomScroll('navv')">
         <img src="logo1.png" alt="Zeina Lahoud MUA Logo" class="logo" />
         <!-- Logo added here -->
       </a>
@@ -36,16 +36,26 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <!-- <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> -->
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
+            <a class="nav-link reference" onclick="CustomScroll('about')"
+              >About</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#price-list">Price List</a>
+            <a class="nav-link reference" onclick="CustomScroll('services')"
+              >Services</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link reference" onclick="CustomScroll('price-list')"
+              >Price List</a
+            >
           </li>
           <!-- Price list link -->
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link reference" onclick="CustomScroll('contact')"
+              >Contact</a
+            >
           </li>
         </ul>
       </div>
@@ -60,7 +70,7 @@
           Exclusive Makeup Services by Zeina Lahoud
         </p>
         <a
-          href="#services"
+          onclick="CustomScroll('services')"
           class="btn btn-outline-light btn-lg mt-3 animate__animated hid fadeInUp"
           >Discover Services</a
         >
@@ -73,9 +83,10 @@
           About Me
         </h2>
         <p class="text-center animate__animated hid fadeIn">
-          I am Zeina Lahoud, a passionate makeup artist trained under [Company
-          Name]. With my certification and specialized training, I am dedicated
-          to crafting the perfect look for your most memorable moments.
+          I am Zeina Lahoud, a passionate makeup artist trained under (nsit esem
+          l ma3had). With my certification and specialized training, I am
+          dedicated to crafting the perfect look for your most memorable
+          moments.
         </p>
       </div>
     </section>
@@ -129,15 +140,15 @@
         <!-- <h2 class="text-center mb-4 animate__animated hid ">
           Price List
         </h2> -->
-        <div class="text-center animate__animated hid fadeInUp">
+        <div class="text-center animate__animated hid fadeInUp pricelist">
           <img
             src="pricelist.png"
             alt="Price List"
             class="img-fluid mb-3 price-list-img" />
           <a
-            href="pricelist.png"
+            href="pricelist2.png"
             download="Price_List_Zeina_Lahoud_MUA"
-            class="btn btn-download-price-list">
+            class="btn btn-download-price-list d-block">
             <i class="fas fa-download"></i> Download Price List
           </a>
         </div>

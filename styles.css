@@ -78,6 +78,16 @@ h3 {
   color: #fff;
 }
 
+.pricelist a {
+  width: fit-content;
+  margin: auto;
+}
+
+#clientCarousel {
+  width: 90vh;
+  margin: auto;
+}
+
 .about,
 .services,
 .contact,
@@ -132,6 +142,7 @@ h3 {
   height: auto;
   border: 1px solid #ddd;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 100vh;
 }
 
 .clients .carousel-item img {

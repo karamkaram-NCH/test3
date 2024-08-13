@@ -37,6 +37,18 @@ document
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+function CustomScroll(id) {
+  const element = document.getElementById(id);
+
+  let position = element.offsetTop;
+
+  window.scrollTo({
+    left: 0,
+    top: position,
+    behavior: "smooth",
+  });
+}
+
 function animate() {
   // Select all elements with the class 'animate__animated'
   const animatedElements = document.querySelectorAll(".animate__animated");
