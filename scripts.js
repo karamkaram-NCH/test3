@@ -1,7 +1,7 @@
 let isNavBarOpened = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-  // callLogApi();
+  callLogApi();
   setFooter();
   startAnimation();
 });
@@ -109,7 +109,7 @@ function startAnimation() {
 
 async function callLogApi() {
   try {
-    await fetch("http://localhost:3000/log-session", {
+    await fetch("https://logs-ikh1.onrender.com/log", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
