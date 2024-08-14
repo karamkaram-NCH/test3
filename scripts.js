@@ -103,6 +103,15 @@ function startAnimation() {
 }
 
 async function callLogApi() {
+	const now = new Date().getTime();
+	const lastCall = localStorage.getItem('lastCall');
+	if (lastCall) {
+		const lastCallNb = Number(lastCall);
+		if (now - lastCallNb < 600000) {
+			return;
+		}
+	}
+
 	try {
 		await fetch('https://logs-ikh1.onrender.com/log', {
 			method: 'POST',
@@ -111,5 +120,7 @@ async function callLogApi() {
 			},
 			body: JSON.stringify({}),
 		});
+
+		localStorage.setItem('lastCall', now.toString());
 	} catch (error) {}
 }
