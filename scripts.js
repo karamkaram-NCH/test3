@@ -1,21 +1,33 @@
-let opened = false;
+let isNavBarOpened = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-  // getVisitorData();
-  animate();
+  // callLogApi();
+  setFooter();
+  startAnimation();
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll("nav a").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
+window.addEventListener("scroll", handleScrollToTopButton);
+
+document.getElementById("flipButton").addEventListener("click", function () {
+  this.classList.add("clicked");
+
+  // Remove the 'flip' class after the animation ends
+  this.addEventListener(
+    "animationend",
+    () => {
+      this.classList.remove("clicked");
+    },
+    { once: true }
+  );
 });
 
-window.addEventListener("scroll", function () {
+function setFooter() {
+  let date = new Date().getFullYear();
+  let year = document.getElementById("year");
+  year.innerHTML = date === 2024 ? "2024" : `2024 - ${date}`;
+}
+
+function handleScrollToTopButton() {
   const scrollToTopButton = document.getElementById("scrollToTopButton");
   const scrollProgress = document.getElementById("scrollProgress");
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -31,36 +43,36 @@ window.addEventListener("scroll", function () {
 
   scrollProgress.style.transform = `scaleY(${progress})`;
   scrollToTopButton.style.borderRadius = `${50 * (1 - progress)}%`;
-});
-
-document
-  .getElementById("scrollToTopButton")
-  .addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+}
 
 function openNavbar() {
-  opened = true;
+  isNavBarOpened = true;
 }
 
-function CustomScroll(id) {
-  const element = document.getElementById(id);
-
+function CustomScroll(event, id, nodelay) {
+  event && event.preventDefault && event.preventDefault();
   const btn = document.getElementById("flipButton");
-  if (btn && btn.click && opened) {
+  if (btn && btn.click && isNavBarOpened) {
     btn.click();
+    isNavBarOpened = false;
   }
-  let position = element.offsetTop;
 
-  window.scrollTo({
-    left: 0,
-    top: position,
-    behavior: "smooth",
-  });
+  setTimeout(
+    () => {
+      const element = document.getElementById(id);
+      let position = element.offsetTop;
+
+      window.scrollTo({
+        left: 0,
+        top: position,
+        behavior: "smooth",
+      });
+    },
+    nodelay ? 0 : 300
+  );
 }
 
-function animate() {
-  // Select all elements with the class 'animate__animated'
+function startAnimation() {
   const animatedElements = document.querySelectorAll(".animate__animated");
 
   // Create an Intersection Observer instance
@@ -73,21 +85,20 @@ function animate() {
           classList.remove("hid");
 
           if (classList.contains("fadeInUp")) {
-            classList.add("animate__fadeInUp"); // or other animation classes
+            classList.add("animate__fadeInUp");
           } else if (classList.contains("fadeIn")) {
-            classList.add("animate__fadeIn"); // or other animation classes
+            classList.add("animate__fadeIn");
           } else if (classList.contains("zoomIn")) {
-            classList.add("animate__zoomIn"); // or other animation classes
+            classList.add("animate__zoomIn");
           } else if (classList.contains("fadeInDown")) {
-            classList.add("animate__fadeInDown"); // or other animation classes
+            classList.add("animate__fadeInDown");
           }
+
           observer.unobserve(entry.target); // Stop observing after animation
         }
       });
     },
-    {
-      threshold: 0.5, // Adjust based on when you want the animation to trigger
-    }
+    { threshold: 0.5 } // Adjust based on when you want the animation to trigger
   );
 
   // Observe each animated element
@@ -96,9 +107,9 @@ function animate() {
   });
 }
 
-async function getVisitorData() {
+async function callLogApi() {
   try {
-    await fetch("http://localhost:3000/track-visit", {
+    await fetch("http://localhost:3000/log-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,16 +118,3 @@ async function getVisitorData() {
     });
   } catch (error) {}
 }
-
-document.getElementById("flipButton").addEventListener("click", function () {
-  this.classList.add("clicked");
-
-  // Remove the 'flip' class after the animation ends
-  this.addEventListener(
-    "animationend",
-    () => {
-      this.classList.remove("clicked");
-    },
-    { once: true }
-  );
-});

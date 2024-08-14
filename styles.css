@@ -88,6 +88,10 @@ h3 {
   margin: auto;
 }
 
+.no-style-button {
+  border: none;
+}
+
 @media only screen and (orientation: landscape) {
   #clientCarousel {
     max-width: 90vw;
