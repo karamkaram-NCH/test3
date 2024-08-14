@@ -89,7 +89,7 @@ h3 {
 }
 
 .no-style-button {
-  border: none;
+  border: none !important;
 }
 
 @media only screen and (orientation: landscape) {
