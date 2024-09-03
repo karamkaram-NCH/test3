@@ -113,7 +113,7 @@ async function callLogApi() {
 	}
 
 	try {
-		await fetch('https://logs-ikh1.onrender.com/log', {
+		await fetch('https://main-server-u49f.onrender.com/api/v1/ks-solutions/logs', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -145,6 +145,8 @@ function sendLogData() {
 			utm_medium: urlParams.get('utm_medium'),
 			utm_campaign: urlParams.get('utm_campaign'),
 		},
+		service: 'makeup website',
+		brand: 'zeina lahoud',
 	};
 }
 
