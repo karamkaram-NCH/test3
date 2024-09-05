@@ -145,7 +145,7 @@ function sendLogData() {
 			utm_medium: urlParams.get('utm_medium'),
 			utm_campaign: urlParams.get('utm_campaign'),
 		},
-		service: 'makeup website',
+		service: 'external website',
 		brand: 'zeina lahoud',
 	};
 }
